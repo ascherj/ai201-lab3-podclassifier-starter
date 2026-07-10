@@ -37,7 +37,7 @@ examples teach the model what each label means at inference time.
                        ▼                        ▼
               ┌─────────────────────────────────────────────┐
               │              Groq LLM API                    │
-              │   llama-3.3-70b-versatile                    │
+              │   meta-llama/llama-4-scout-17b-16e-instruct  │
               │   Single chat completion per episode         │
               └─────────────────────────────────────────────┘
                        │
@@ -81,7 +81,7 @@ This lab makes that parallel explicit:
 |---|---|
 | Training data | `my_labels.json` + `train_episodes.json` |
 | Training signal | Labeled examples in the prompt |
-| Model | `llama-3.3-70b-versatile` (weights fixed) |
+| Model | `meta-llama/llama-4-scout-17b-16e-instruct` (weights fixed) |
 | Inference | `classify_episode()` |
 | Evaluation | `run_evaluation()` on held-out test set |
 | Accuracy metric | `compute_accuracy()`, `compute_per_class_accuracy()` |
@@ -126,7 +126,7 @@ load_labeled_examples()   ←── my_labels.json + train_episodes.json
 build_few_shot_prompt(labeled_examples, description)
         │
         ▼
-Groq API: llama-3.3-70b-versatile
+Groq API: meta-llama/llama-4-scout-17b-16e-instruct
         │
         ▼
 Parse response → {"label": "...", "reasoning": "..."}
