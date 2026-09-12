@@ -148,7 +148,10 @@ Call _client.chat.completions.create() with:
   - model: the model name from config (LLM_MODEL)
   - messages: a list with one dict — {"role": "user", "content": prompt}
     (system-design.md shows an optional system message too — either shape works)
-  - max_tokens: a reasonable limit (e.g., 200–300) to keep responses concise
+  - max_tokens: leave it unset. This model reasons before it answers, and the
+    reasoning tokens count against max_tokens — a cap of 200–300 can consume the
+    whole budget and return an empty string. If you want a cap anyway, also pass
+    reasoning_effort="low".
 
 Extract the response text from:
   response.choices[0].message.content
