@@ -5,7 +5,10 @@ load_dotenv()
 
 # --- LLM ---
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-LLM_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
+# Groq retired every Llama chat model in 2026. gpt-oss-20b is a Production-tier
+# replacement. It reasons before it answers, and those tokens count against
+# max_tokens, so keep max_tokens at 200 or more or content comes back empty.
+LLM_MODEL = "openai/gpt-oss-20b"
 
 # --- Classifier ---
 VALID_LABELS = ["interview", "solo", "panel", "narrative"]
